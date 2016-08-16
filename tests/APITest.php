@@ -17,7 +17,7 @@ class APITest extends TestCase
     public function testBuildings()
     {
 
-        $user = User::where('email', 'jayrav13@gmail.com')->first();
+        $user = User::where('email', env('MASTER_USERNAME'))->first();
         $this->get('/api/v0.1/buildings?api_token=' . $user->api_token)
             ->seeJson([
                 'status' => 200
@@ -31,7 +31,7 @@ class APITest extends TestCase
      */
     public function testEvents()
     {
-        $user = User::where('email', 'jayrav13@gmail.com')->first();
+        $user = User::where('email', env('MASTER_USERNAME'))->first();
         $this->get('/api/v0.1/events?api_token=' . $user->api_token)->seeJson(['status' => 200]);
     }
 

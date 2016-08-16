@@ -33,8 +33,15 @@ class StandardResponse
         if($status == 200)
         {
             $user = Auth::guard('api')->user();
-            $user->requests_success++;
-            $user->save();
+            if($user)
+            {
+                $user->requests_success++;
+                $user->save();
+            }
+            else
+            {
+                // An unprotected route is accessing the API.
+            }
         }
 
         $dict = [
