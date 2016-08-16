@@ -1,0 +1,4 @@
+HTMLParser==0.0.2
+requests==2.11.0
+wheel==0.24.0
+lxml==3.4.4
