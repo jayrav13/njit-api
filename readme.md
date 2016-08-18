@@ -1,25 +1,23 @@
 # NJIT API
 
-Welcome to NJIT's API! This is an open source project created by @jayrav13. Members of the community are encouraged to contribute!
+Welcome to NJIT's API! This is an open source project created by Jay Ravaliya (@jayrav13). Members of the community are encouraged to contribute!
 
 ## About
 
-The purpose of building this project out is simple - there is a lot of data available on campus, but it is not in one place. Bringing this data together and making it available to students, courses and organizations will have a multiplying effect on what we're able to build for our community. Why not give it a try?
+The purpose of building this project out is simple - there is a lot of data available on campus, but is disparate and not uniformally accessible. Bringing this data together and making it available to students, courses and organizations will have a multiplying effect on what we're able to build for our community.
 
 ## Usage
 
 There are two ways that this API can be used:
 
  1. Using a version hosted by us, found at https://njit-api.herokuapp.com 
- 2. Cloning and hosting this version on your own.
+ 2. Cloning and hosting it on your own.
 
 Both methods will be discussed throughout this documentation.
 
-## Getting Started
+## Register
 
-#### How do I sign up?
-
-In this stage of the API, signing up involves an HTTP request. Here is an example using cURL:
+Users can register to use this API by making the following HTTP request:
 
 ```bash
 curl -i -X GET "https://njit-api.herokuapp.com/api/v0.1/users"
@@ -79,24 +77,13 @@ You'll notice that this includes a key `api_token` inside the `data` object. Thi
 }
 ```
 
-#### Can you break down the response format?
+## Resources
 
-Sure! The goal was to make a standardized response format across all resources. The four main keys are:
+This API offers `GET` resources to retrieve different data models by unique endpoints.
 
-- `status`: This is an integer value representing the HTTP response code.
-- `response`: This object provides additional values regarding HTTP response.
-- `message`: In the event that a message needs to be returned, this field will include it.
-- `data`: This is the primary field which will include response data. These responses will be predictable - you are encouraged to play with the various endpoints to learn their behaviours.
-- `response_time`: An approximate response time for the server.
+#### `GET /api/v0.1/buildings`
 
-
-#### What does this API offer?
-
-This is a great question to start with. As of today, this API offers the below resources to be consumed:
-
-`GET /api/v0.1/buildings`
-
-> The response is an array of buildings on campus. Source: http://www.njit.edu/about/visit/njit-maps.php
+> Source: http://www.njit.edu/about/visit/njit-maps.php
 
 ```json
 {
@@ -123,9 +110,9 @@ This is a great question to start with. As of today, this API offers the below r
 }
 ```
 
-`GET /api/v0.1/events`
+#### `GET /api/v0.1/events`
 
-> The Event object includes key data such as start and end times, whether or not this is an all day event, etc. Source: http://r25livepr1.njit.edu/calendar/
+> Source: http://r25livepr1.njit.edu/calendar/
 
 ```json
 {
@@ -158,9 +145,9 @@ This is a great question to start with. As of today, this API offers the below r
 }
 ```
 
-`GET /api/v0.1/sports`
+#### `GET /api/v0.1/sports`
 
-> Each of the Sport objects contains relations to other objects, including Athlete and Coach. By calling this endpoint, you receive all of that data back in one giant HTTP response. Source: http://njithighlanders.com/
+> Source: http://njithighlanders.com/
 
 ```json
 {
