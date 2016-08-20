@@ -74,7 +74,7 @@ This API offers `GET` resources to retrieve different data models by unique endp
 
 #### Sample Request
 ```bash
-$ curl -i -X GET "https://njit-api-stage.herokuapp.com/api/v0.1/buildings?api_token=uLgoyTw51vEXbWhr1Jy3h6IpPGtFcLfhHbYxqQ9x53l6byFmafAy0jW9asSw"
+$ curl -i -X GET "https://njit-api-stage.herokuapp.com/api/v0.1/buildings?api_token=..."
 ```
 
 ### `GET /api/v0.1/buildings`
