@@ -6,15 +6,6 @@ Welcome to NJIT's API! This is an open source project created by Jay Ravaliya (@
 
 The purpose of building this project out is simple - there is a lot of data available on campus, but is disparate and not uniformally accessible. Bringing this data together and making it available to students, courses and organizations will have a multiplying effect on what we're able to build for our community.
 
-## Usage
-
-There are two ways that this API can be used:
-
- 1. Using a version hosted by us, found at https://njit-api.herokuapp.com 
- 2. Cloning and hosting it on your own.
-
-Both methods will be discussed throughout this documentation.
-
 ## Register
 
 Users can register to use this API by making the following HTTP request:
@@ -79,9 +70,14 @@ You'll notice that this includes a key `api_token` inside the `data` object. Thi
 
 ## Resources
 
-This API offers `GET` resources to retrieve different data models by unique endpoints.
+This API offers `GET` resources to retrieve different data models by unique endpoints. All resources must include `api_token` as a query string parameter.
 
-#### `GET /api/v0.1/buildings`
+#### Sample Request
+```bash
+$ curl -i -X GET "https://njit-api-stage.herokuapp.com/api/v0.1/buildings?api_token=uLgoyTw51vEXbWhr1Jy3h6IpPGtFcLfhHbYxqQ9x53l6byFmafAy0jW9asSw"
+```
+
+### `GET /api/v0.1/buildings`
 
 > Source: http://www.njit.edu/about/visit/njit-maps.php
 
@@ -110,7 +106,7 @@ This API offers `GET` resources to retrieve different data models by unique endp
 }
 ```
 
-#### `GET /api/v0.1/events`
+### `GET /api/v0.1/events`
 
 > Source: http://r25livepr1.njit.edu/calendar/
 
@@ -145,7 +141,7 @@ This API offers `GET` resources to retrieve different data models by unique endp
 }
 ```
 
-#### `GET /api/v0.1/sports`
+### `GET /api/v0.1/sports`
 
 > Source: http://njithighlanders.com/
 
@@ -203,3 +199,22 @@ This API offers `GET` resources to retrieve different data models by unique endp
   "response_time": 0.081201076507568
 }
 ```
+
+## Project Hosts
+
+We currently run on the following hosts:
+
+Name | Type | Host
+---- | ---- | ----
+njit-api | Production | https://njit-api.herokuapp.com
+njit-api-stage | Staging | https://njit-api-stage.herokuapp.com
+
+This documentation will ALWAYS reflect Production resources and functionality.
+
+## Notes
+
+This project is currently hosted on a free tier instance of [Heroku](https://heroku.com/). As such, there are limitations surrounding availability and also, in certain cases, response time. Please be cognizant of these limitations in the short term!
+
+## Support?
+
+Contact Jay Ravaliya (@jayrav13) or Open an Issue!
