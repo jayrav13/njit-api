@@ -63,8 +63,6 @@ class SportsLibrary {
                 $sport->save();
             }
 
-            dispatch(new SendJobCompletedEmail());
-
         });
     }
 

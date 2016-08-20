@@ -7,3 +7,4 @@ Homestead.json
 .env
 npm-debug.log
 venv/
+dump.rdb
