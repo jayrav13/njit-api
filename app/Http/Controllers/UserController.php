@@ -2,30 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Libraries\StandardResponse;
+use App\Models\User;
+use Auth;
+use Hash;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 use Validator;
 
-use App\Libraries\StandardResponse;
-use App\Libraries\HTTPStatusCodes;
-
-use App\Models\User;
-use Hash;
-use Log;
-use Illuminate\Support\Facades\Input;
-use Auth;
-
 /**
- *  UserController
+ *  UserController.
  *
  *  This class will be used to manage the User object.
  */
 class UserController extends Controller
 {
-
     /**
-     *  createUser
+     *  createUser.
      *
      *  Creates a new User record.
      */
@@ -34,14 +27,13 @@ class UserController extends Controller
 
         // Validate key parameters
         $validator = Validator::make(Input::all(), [
-            "name" => "required|max:255",
-            "email" => "required|email|max:255|unique:users,email",
-            "password" => "required|min:8|max:16"
+            'name'     => 'required|max:255',
+            'email'    => 'required|email|max:255|unique:users,email',
+            'password' => 'required|min:8|max:16',
         ]);
 
         // On fail, return error messages.
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             return StandardResponse::json($validator->errors(), 400);
         }
 
@@ -50,25 +42,25 @@ class UserController extends Controller
 
         // Return User object.
         return StandardResponse::json([
-            "user" => $user, 
-            "api_token" => $user->api_token
+            'user'      => $user,
+            'api_token' => $user->api_token,
         ], 200);
-
     }
 
     /**
-     *  getUser
+     *  getUser.
      *
      *  Returns a User record.
      */
     public function getUser(Request $request)
     {
         $user = Auth::guard('api')->user();
+
         return StandardResponse::json($user, 200);
     }
 
     /**
-     *  editUser
+     *  editUser.
      *
      *  Edits a user record.
      */
@@ -78,32 +70,29 @@ class UserController extends Controller
 
         // Validate key parameters
         $validator = Validator::make(Input::all(), [
-            "name" => "max:255",
-            "email" => "email|max:255|unique:users,email",
-            "password" => "min:8|max:16"
+            'name'     => 'max:255',
+            'email'    => 'email|max:255|unique:users,email',
+            'password' => 'min:8|max:16',
         ]);
 
         // On fail, return error messages.
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             return StandardResponse::json($validator->errors(), 400);
         }
 
         $user->fill(Input::all());
 
-        if(array_key_exists("password", Input::all()))
-        {
+        if (array_key_exists('password', Input::all())) {
             $user->password = Hash::make(Input::get('password'));
         }
 
         $user->save();
 
         return StandardResponse::json($user, 200);
-
     }
 
     /**
-     *  deleteUser
+     *  deleteUser.
      *
      *  Soft Deletes a User record.
      */
@@ -111,7 +100,7 @@ class UserController extends Controller
     {
         $user = Auth::guard('api')->user();
         $user->delete();
+
         return StandardResponse::json($user, 200);
     }
-
 }

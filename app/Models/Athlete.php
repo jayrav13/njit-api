@@ -14,5 +14,4 @@ class Athlete extends Model
     {
         return $this->belongsTo('App\Models\Sport', 'sport_id', 'id');
     }
-
 }

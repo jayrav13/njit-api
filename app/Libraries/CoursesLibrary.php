@@ -2,36 +2,28 @@
 
 namespace App\Libraries;
 
-use DB;
 use App\Models\Semester;
 use App\Models\Subject;
+use DB;
 
-class CoursesLibrary {
-
+class CoursesLibrary
+{
     public static function getCourses()
     {
-        DB::transaction(function() {
-            
+        DB::transaction(function () {
             $semesters = Semester::all();
             Subject::truncate();
 
-            foreach($semesters as $semester)
-            {
+            foreach ($semesters as $semester) {
                 $subjects = [];
-                exec('python storage/scripts/courses/subjects.py ' . $semester->permalink, $subjects);
+                exec('python storage/scripts/courses/subjects.py '.$semester->permalink, $subjects);
 
-                foreach($subjects as $subject)
-                {
-
+                foreach ($subjects as $subject) {
                     $subject = json_decode($subject, true);
 
-                    try
-                    {
+                    try {
                         $semester->subjects()->create($subject);
-                    }
-                    catch (Exception $e)
-                    {
-
+                    } catch (Exception $e) {
                     }
                 }
             }

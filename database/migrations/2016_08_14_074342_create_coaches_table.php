@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateCoachesTable extends Migration
 {
@@ -12,7 +12,7 @@ class CreateCoachesTable extends Migration
      */
     public function up()
     {
-        Schema::create('coaches', function(Blueprint $table) {
+        Schema::create('coaches', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image_url');
             $table->string('name');

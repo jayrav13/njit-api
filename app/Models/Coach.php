@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Coach extends Model
 {
-
     protected $table = 'coaches';
 
     protected $guarded = [];
@@ -15,5 +14,4 @@ class Coach extends Model
     {
         return $this->belongsTo('App\Models\Sport', 'sport_id', 'id');
     }
-
 }
