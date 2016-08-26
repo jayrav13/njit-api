@@ -6,11 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sport extends Model
 {
-
     protected $table = 'sports';
 
     protected $guarded = [
-        'created_at', 'updated_at', 'id'
+        'created_at', 'updated_at', 'id',
     ];
 
     public function athletes()
@@ -22,5 +21,4 @@ class Sport extends Model
     {
         return $this->hasMany('App\Models\Coach', 'sport_id', 'id');
     }
-
 }

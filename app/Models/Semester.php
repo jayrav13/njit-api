@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Semester extends Model
 {
-
     protected $table = 'semesters';
 
     protected $guarded = [];
@@ -15,5 +14,4 @@ class Semester extends Model
     {
         return $this->hasMany('App\Models\Subject', 'semester_id', 'id');
     }
-
 }

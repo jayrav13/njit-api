@@ -2,54 +2,49 @@
 
 namespace App\Libraries;
 
-use Response;
 use Auth;
-use Log;
+use Response;
 
 /**
- *  StandardResponse
+ *  StandardResponse.
  *
  *  This is a custom class written to generate standardized JSON responses
  *  for this project.
  */
 class StandardResponse
 {
-
     /**
-     *  json
+     *  json.
      *
-     *  This function leverages Laravel's Response class to return a 
+     *  This function leverages Laravel's Response class to return a
      *  Laravel-friendly HTTP response object that is standardized.
      *
      *  @param  $statusCode
      *  @param  $message
      *  @param  $data
+     *
      *  @return \Response
      */
-    public static function json($data, $status, $message = null) 
+    public static function json($data, $status, $message = null)
     {
 
         // Increment requests_success if HTTP status is 200.
-        if($status == 200)
-        {
+        if ($status == 200) {
             $user = Auth::guard('api')->user();
-            if($user)
-            {
+            if ($user) {
                 $user->requests_success++;
                 $user->save();
-            }
-            else
-            {
+            } else {
                 // An unprotected route is accessing the API.
             }
         }
 
         $dict = [
-            "status" => $status,
-            "response" => HTTPStatusCodes::code($status),
-            "message" => $message,
-            "data" => $data,
-            "response_time" => microtime(true) - LARAVEL_START
+            'status'        => $status,
+            'response'      => HTTPStatusCodes::code($status),
+            'message'       => $message,
+            'data'          => $data,
+            'response_time' => microtime(true) - LARAVEL_START,
         ];
 
         return Response::json($dict, $status);

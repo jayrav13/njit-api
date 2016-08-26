@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
-
 use App\Models\Semester;
+use Illuminate\Database\Seeder;
 
 class SemestersTableSeeder extends Seeder
 {
@@ -13,24 +12,22 @@ class SemestersTableSeeder extends Seeder
      */
     public function run()
     {
-
         Semester::create([
-            "name" => "Spring",
-            "permalink" => "spring",
+            'name'      => 'Spring',
+            'permalink' => 'spring',
         ]);
 
         Semester::create([
-            "name" => "Summer",
-            "permalink" => "summer"
+            'name'      => 'Summer',
+            'permalink' => 'summer',
         ]);
         Semester::create([
-            "name" => "Fall",
-            "permalink" => "fall"
+            'name'      => 'Fall',
+            'permalink' => 'fall',
         ]);
         Semester::create([
-            "name" => "Winter",
-            "permalink" => "winter"
+            'name'      => 'Winter',
+            'permalink' => 'winter',
         ]);
-
     }
 }

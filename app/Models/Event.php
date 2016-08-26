@@ -18,6 +18,6 @@ class Event extends Model
         'all_day',
         'organization',
         'description',
-        'category'
+        'category',
     ];
 }

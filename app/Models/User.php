@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\SoftDeletes;
-
 use Hash;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-
     use SoftDeletes;
 
     protected $table = 'users';
@@ -19,7 +17,6 @@ class User extends Authenticatable
      *
      * @var array
      */
-
     protected $fillable = [
         'name', 'email',
     ];
@@ -30,11 +27,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'api_token'
+        'password', 'remember_token', 'api_token',
     ];
 
     protected $dates = [
-        'deleted_at'
+        'deleted_at',
     ];
 
     /**
@@ -46,12 +43,9 @@ class User extends Authenticatable
     {
         parent::boot();
 
-        static::creating(function($user)
-        {
+        static::creating(function ($user) {
             $user->api_token = str_random(60);
             $user->password = Hash::make($user->password);
         });
-        
     }
-
 }
