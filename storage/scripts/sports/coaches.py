@@ -23,7 +23,8 @@ if len(sys.argv) != 2:
 uri = sys.argv[1]
 
 # Make a GET request that corresponds with the URI segment provided.
-page = requests.get(base_url + uri)
+headers= {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36'}
+page = requests.get(base_url + uri, headers=headers)
 
 # In the event that a valid status code is not returned, exit the script immediately.
 # This is specifically done so nothing is written out to standard output and the

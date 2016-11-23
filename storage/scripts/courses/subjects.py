@@ -13,7 +13,7 @@ import json
 
 # Variables
 semesters = ['spring', 'summer', 'fall', 'winter']
-url = 'http://njit.edu/registrar/schedules/courses/%s/index_list.html'
+url = 'http://registration.njit.edu/registrar/schedules/courses/%s/index_list.html'
 
 # Confirm that the client has provided two argument variables, the second
 # of which is a valid semester. If it is not, exit.

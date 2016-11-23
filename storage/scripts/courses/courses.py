@@ -12,7 +12,7 @@ import sys
 import json
 
 # Variables
-url = 'http://www.njit.edu/registrar/schedules/courses/%s/%s'
+url = 'http://registration.njit.edu/registrar/schedules/courses/%s/%s'
 
 # Confirm that the client has provided three argument variables, the second
 # of which is a valid semester and the third of which is a valid webpage

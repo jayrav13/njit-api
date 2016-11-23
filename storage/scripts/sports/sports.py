@@ -20,7 +20,8 @@ base_url = 'http://www.njithighlanders.com'
 # and we could not identify the data source. However, the 404 page seems to have the 
 # same data availeble at the bottom, loaded with the page. Thus, we're using this as the data source. 
 #
-page = requests.get(base_url + '/404-1.aspx?url=/404.aspx')
+headers= {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36'}
+page = requests.get(base_url + '/404-1.aspx?url=/404.aspx', headers=headers)
 
 # Force encode the page with utf-8. This issue came up with the events scraper, so is used
 # as a failsafe.
