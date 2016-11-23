@@ -19,7 +19,7 @@ class CreateCoachesTable extends Migration
             $table->string('title');
 
             $table->integer('sport_id')->unsigned();
-            $table->foreign('sport_id')->references('id')->on('sports')->onDelete('cascade');
+            $table->foreign('sport_id')->references('id')->on('sports')->onDelete('CASCADE');
 
             $table->timestamps();
         });

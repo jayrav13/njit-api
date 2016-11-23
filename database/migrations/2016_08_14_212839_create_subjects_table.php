@@ -17,7 +17,7 @@ class CreateSubjectsTable extends Migration
             $table->string('acronym');
             $table->string('webpage');
             $table->integer('semester_id')->unsigned();
-            $table->foreign('semester_id')->references('id')->on('semesters')->onDelete('cascade');
+            $table->foreign('semester_id')->references('id')->on('semesters')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

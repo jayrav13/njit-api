@@ -25,7 +25,7 @@ class CreateAthletesTable extends Migration
             $table->string('hometown')->nullable();
 
             $table->integer('sport_id')->unsigned();
-            $table->foreign('sport_id')->references('id')->on('sports');
+            $table->foreign('sport_id')->references('id')->on('sports')->onDelete('CASCADE');
 
             $table->timestamps();
 
